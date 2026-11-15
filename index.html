@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08070c">
 <meta name="description" content="Spesial Edition - Video pilihan">
-
 <title>SPESIAL EDITION</title>
 
 <style>
@@ -19,27 +18,26 @@
 body {
   font-family: Arial, sans-serif;
   background:
-    radial-gradient(ellipse at top left, #35101e, transparent 45%),
-    radial-gradient(ellipse at bottom right, #17112c, transparent 45%),
+    radial-gradient(ellipse at top left,#35101e,transparent 45%),
+    radial-gradient(ellipse at bottom right,#17112c,transparent 45%),
     #08070c;
   color: white;
   min-height: 100vh;
 }
-
-/* HEADER */
 
 .header {
   padding: 28px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 13px;
-  font-size: 27px;
+  gap: 12px;
+  font-size: clamp(17px,5vw,27px);
   font-weight: 900;
   letter-spacing: 1px;
 }
@@ -48,14 +46,12 @@ body {
   background: #ff3158;
   width: 55px;
   height: 55px;
+  flex-shrink: 0;
   border-radius: 17px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 25px #ff315855;
-}
-
-.logo-icon span {
   font-size: 25px;
 }
 
@@ -67,44 +63,46 @@ body {
   border: 1px solid #92243f;
   color: #ff6684;
   background: #2c101b;
-  padding: 12px 20px;
+  padding: 11px 15px;
   border-radius: 30px;
   font-weight: bold;
+  font-size: 13px;
   letter-spacing: 2px;
+  white-space: nowrap;
 }
-
-/* INFO BAR */
 
 .info-bar {
   margin: 10px 18px 35px;
-  padding: 20px 12px;
+  padding: 20px 10px;
   background: #17161c;
   border: 1px solid #302c38;
   border-radius: 24px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: #dddce5;
   font-weight: bold;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: clamp(10px,3vw,14px);
 }
 
 .dot {
   color: #ff6684;
-  font-size: 20px;
 }
-
-/* VIDEO GRID */
 
 .container {
   padding: 0 17px 35px;
 }
 
+.section-title {
+  font-size: 21px;
+  margin: 0 0 20px 3px;
+}
+
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 22px 16px;
 }
 
@@ -113,13 +111,14 @@ body {
   overflow: hidden;
   border-radius: 34px;
   border: 2px solid #34303c;
-  aspect-ratio: 0.73;
+  aspect-ratio: .73;
   background: #17141c;
   cursor: pointer;
-  text-align: left;
   color: white;
-  padding: 0;
+  text-align: left;
   width: 100%;
+  padding: 0;
+  display: block;
 }
 
 .video-card img {
@@ -128,11 +127,6 @@ body {
   object-fit: cover;
   position: absolute;
   inset: 0;
-  transition: transform .3s;
-}
-
-.video-card:active img {
-  transform: scale(1.04);
 }
 
 .video-card::after {
@@ -141,8 +135,9 @@ body {
   inset: 0;
   background: linear-gradient(
     transparent 45%,
-    rgba(0,0,0,.85) 100%
+    rgba(0,0,0,.85)
   );
+  pointer-events: none;
 }
 
 .live-label {
@@ -155,7 +150,6 @@ body {
   border-radius: 12px;
   font-weight: bold;
   font-size: 13px;
-  letter-spacing: 1px;
 }
 
 .hd-label {
@@ -171,23 +165,27 @@ body {
 
 .play-circle {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   width: 88px;
   height: 88px;
   border-radius: 50%;
+  border: none;
   background: #ff3158ed;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 34px;
+  padding-left: 6px;
+  cursor: pointer;
   box-shadow: 0 0 25px #ff315855;
 }
 
-.play-circle span {
-  font-size: 34px;
-  margin-left: 6px;
+.play-circle:active {
+  transform: translate(-50%,-50%) scale(.93);
 }
 
 .video-info {
@@ -195,27 +193,18 @@ body {
   bottom: 20px;
   left: 17px;
   z-index: 2;
+  pointer-events: none;
 }
 
 .video-info h3 {
   font-size: 20px;
   margin-bottom: 8px;
-  text-transform: none;
 }
 
 .video-info p {
   color: #dedee5;
   font-size: 14px;
 }
-
-/* SECTION */
-
-.section-title {
-  font-size: 21px;
-  margin: 0 0 20px 3px;
-}
-
-/* VIDEO PLAYER MODAL */
 
 .modal {
   display: none;
@@ -263,8 +252,6 @@ body {
   cursor: pointer;
 }
 
-/* FOOTER */
-
 .footer {
   text-align: center;
   padding: 30px 15px;
@@ -276,20 +263,13 @@ body {
 
 <body>
 
-<!-- HEADER -->
-
 <header class="header">
   <div class="logo">
-    <div class="logo-icon">
-      <span>▶</span>
-    </div>
+    <div class="logo-icon">▶</div>
     <div>SPESIAL<b>EDITION</b></div>
   </div>
-
   <div class="live-header">● LIVE</div>
 </header>
-
-<!-- INFO -->
 
 <div class="info-bar">
   <span class="dot">●</span>
@@ -299,90 +279,82 @@ body {
   <span class="dot">●</span>
 </div>
 
-<!-- VIDEO LIST -->
-
 <main class="container">
 
 <h2 class="section-title">▣ PILIH VIDEO</h2>
 
 <div class="video-grid">
 
-  <button class="video-card"
-    data-video="videos/video1.mp4">
+  <div class="video-card" data-video="videos/video1.mp4">
     <img src="images/thumb1.jpg" alt="Video 1">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 1</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
-  <button class="video-card"
-    data-video="videos/video2.mp4">
+  <div class="video-card" data-video="videos/video2.mp4">
     <img src="images/thumb2.jpg" alt="Video 2">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 2</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
-  <button class="video-card"
-    data-video="videos/video3.mp4">
+  <div class="video-card" data-video="videos/video3.mp4">
     <img src="images/thumb3.jpg" alt="Video 3">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 3</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
-  <button class="video-card"
-    data-video="videos/video4.mp4">
+  <div class="video-card" data-video="videos/video4.mp4">
     <img src="images/thumb4.jpg" alt="Video 4">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 4</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
-  <button class="video-card"
-    data-video="videos/video5.mp4">
+  <div class="video-card" data-video="videos/video5.mp4">
     <img src="images/thumb5.jpg" alt="Video 5">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 5</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
-  <button class="video-card"
-    data-video="videos/video6.mp4">
+  <div class="video-card" data-video="videos/video6.mp4">
     <img src="images/thumb6.jpg" alt="Video 6">
     <span class="live-label">● LIVE</span>
     <span class="hd-label">HD</span>
-    <div class="play-circle"><span>▶</span></div>
+    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
     <div class="video-info">
       <h3>Video 6</h3>
       <p>Ketuk untuk menonton</p>
     </div>
-  </button>
+  </div>
 
 </div>
 </main>
 
-<!-- PLAYER -->
+<!-- PEMUTAR VIDEO -->
 
 <div class="modal" id="videoModal">
   <div class="player-box">
@@ -400,10 +372,33 @@ body {
 </footer>
 
 <script>
+
+// LINK DIRECT MONETAG
+const MONETAG_LINK = "https://uplcm.com/4/11810812";
+
 const modal = document.getElementById("videoModal");
 const player = document.getElementById("mainVideo");
 const closeBtn = document.getElementById("closePlayer");
 
+// KLIK SEGITIGA MERAH = MONETAG
+document.querySelectorAll(".play-circle").forEach(button => {
+
+  button.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    // Buka iklan di tab baru
+    window.open(
+      MONETAG_LINK,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  });
+
+});
+
+// KLIK AREA KARTU = PUTAR VIDEO
 document.querySelectorAll(".video-card").forEach(card => {
 
   card.addEventListener("click", function() {
@@ -418,41 +413,41 @@ document.querySelectorAll(".video-card").forEach(card => {
     player.pause();
     player.src = videoUrl;
     modal.classList.add("active");
-
     player.load();
 
-    const playPromise = player.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Pengguna dapat menekan tombol Play manual.
-      });
-    }
+    player.play().catch(() => {
+      // Pengunjung dapat menekan play manual
+    });
 
   });
 
 });
 
+// TUTUP VIDEO
 function closeModal() {
+
   player.pause();
   player.removeAttribute("src");
   player.load();
+
   modal.classList.remove("active");
+
 }
 
 closeBtn.addEventListener("click", closeModal);
 
-modal.addEventListener("click", function(e) {
-  if (e.target === modal) {
+modal.addEventListener("click", function(event) {
+  if (event.target === modal) {
     closeModal();
   }
 });
 
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
     closeModal();
   }
 });
+
 </script>
 
 </body>
