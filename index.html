@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
+
 <title>Video News</title>
 
 <style>
@@ -16,18 +17,18 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #ffffff;
+  background: #fff;
   color: #111827;
 }
 
 /* HEADER */
 .header {
-  height: 90px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 25px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eee;
 }
 
 .logo {
@@ -82,10 +83,10 @@ body {
   margin: auto;
   position: relative;
   overflow: hidden;
-  border-radius: 45px;
+  border-radius: 40px;
   background: #111;
   aspect-ratio: 9 / 16;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 30px rgba(0,0,0,.15);
 }
 
 .video-card video {
@@ -95,47 +96,58 @@ body {
   display: block;
 }
 
-/* PLAY BUTTON BESAR */
-.play-button {
+/* AREA KLIK SELURUH VIDEO */
+.video-click-area {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
-  border: none;
+  inset: 0;
+  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 5;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
-  transition: 0.2s;
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
-.play-button:hover {
-  transform: translate(-50%, -50%) scale(1.10);
+.video-click-area.hidden {
+  display: none;
+}
+
+/* PLAY BUTTON BESAR */
+.play-button {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.96);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 25px rgba(0,0,0,.25);
+  transition: transform .2s;
+  pointer-events: none;
+}
+
+.video-click-area:active .play-button {
+  transform: scale(.92);
 }
 
 .play-button::before {
   content: "";
   width: 0;
   height: 0;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 45px solid #000;
-  margin-left: 10px;
-}
-
-.play-button.hidden {
-  display: none;
+  border-top: 34px solid transparent;
+  border-bottom: 34px solid transparent;
+  border-left: 50px solid #000;
+  margin-left: 12px;
 }
 
 /* MOBILE */
 @media(max-width:600px) {
   .header {
+    height: 90px;
     padding: 12px 15px;
   }
 
@@ -176,19 +188,26 @@ body {
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
+
   <div class="logo">
     <div class="logo-icon">V</div>
     <div>vldey<span>.co</span></div>
   </div>
 
-  <button class="upload">Upload</button>
+  <button class="upload" type="button">
+    Upload
+  </button>
+
 </header>
 
+<!-- CONTENT -->
 <main class="container">
 
   <div class="advertise">Advertise</div>
 
+  <!-- VIDEO CARD -->
   <div class="video-card">
 
     <video
@@ -196,14 +215,22 @@ body {
       poster="https://placehold.co/600x1067/252525/ffffff?text=VIDEO+THUMBNAIL"
       playsinline
       preload="metadata"
+      controls
     >
-      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+      <source
+        src="https://videotourl.com/videos/1794844886007-d581965f-ce17-4406-afe3-153ac8cc3fd2.mp4"
+        type="video/mp4">
     </video>
 
+    <!-- SELURUH AREA BISA DIKLIK -->
     <button
-      class="play-button"
-      id="playButton"
-      aria-label="Putar video">
+      class="video-click-area"
+      id="clickArea"
+      type="button"
+      aria-label="Buka iklan dan putar video">
+
+      <span class="play-button"></span>
+
     </button>
 
   </div>
@@ -211,32 +238,73 @@ body {
 </main>
 
 <script>
+
+/* =================================
+   LINK DIRECT MONETAG
+================================= */
+
+const MONETAG_LINK = "MASUKKAN_LINK_DIRECT_MONETAG_KAMU";
+
+/* =================================
+   VIDEO DAN TOMBOL PLAY
+================================= */
+
 const video = document.getElementById("myVideo");
-const playButton = document.getElementById("playButton");
+const clickArea = document.getElementById("clickArea");
 
-playButton.addEventListener("click", function() {
-  video.play().then(() => {
-    playButton.classList.add("hidden");
-    video.controls = true;
-  }).catch(() => {
-    alert("Video gagal diputar. Periksa link video.");
-  });
-});
+let sudahKlik = false;
 
-video.addEventListener("ended", function() {
-  playButton.classList.remove("hidden");
-  video.controls = false;
-});
+clickArea.addEventListener("click", function() {
 
-video.addEventListener("pause", function() {
-  if (!video.ended) {
-    playButton.classList.remove("hidden");
+  // CEK LINK MONETAG
+  if (
+    !MONETAG_LINK ||
+    MONETAG_LINK === "https://uplcm.com/4/11810812"
+  ) {
+    alert("Masukkan link Direct Monetag terlebih dahulu!");
+    return;
   }
+
+  // BUKA IKLAN MONETAG SAAT DIKLIK
+  if (!sudahKlik) {
+
+    window.open(
+      MONETAG_LINK,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    sudahKlik = true;
+  }
+
+  // PUTAR VIDEO DI HALAMAN UTAMA
+  video.play().then(function() {
+
+    clickArea.classList.add("hidden");
+
+  }).catch(function() {
+
+    // Jika video gagal diputar,
+    // tombol tetap tersedia
+    sudahKlik = false;
+
+    alert("Video gagal diputar. Periksa link MP4.");
+
+  });
+
 });
 
+/* HILANGKAN TOMBOL SAAT VIDEO DIPUTAR */
 video.addEventListener("play", function() {
-  playButton.classList.add("hidden");
+  clickArea.classList.add("hidden");
 });
+
+/* TAMPILKAN KEMBALI SETELAH VIDEO SELESAI */
+video.addEventListener("ended", function() {
+  clickArea.classList.remove("hidden");
+  sudahKlik = false;
+});
+
 </script>
 
 </body>
