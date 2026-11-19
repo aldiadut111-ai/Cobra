@@ -4,257 +4,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08070c">
-<meta name="description" content="Spesial Edition - Video VIRAL">
-<title>ASUPAN TERLENGKAP 📽</title>
+<meta name="theme-color" content="#ffffff">
+<title>Video News</title>
 
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background:
-    radial-gradient(ellipse at top left,#35101e,transparent 45%),
-    radial-gradient(ellipse at bottom right,#17112c,transparent 45%),
-    #08070c;
-  color: white;
-  min-height: 100vh;
+  background: #ffffff;
+  color: #111827;
 }
 
+/* HEADER */
 .header {
-  padding: 28px 18px;
+  height: 90px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  padding: 15px 25px;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: clamp(17px,5vw,27px);
-  font-weight: 900;
-  letter-spacing: 1px;
+  gap: 14px;
+  font-size: 27px;
+  font-weight: bold;
 }
 
 .logo-icon {
-  background: #ff3158;
-  width: 55px;
-  height: 55px;
-  flex-shrink: 0;
-  border-radius: 17px;
+  width: 60px;
+  height: 60px;
+  background: #111827;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 25px #ff315855;
-  font-size: 25px;
+  border-radius: 14px;
+  font-size: 32px;
 }
 
-.logo b {
-  color: #ff3158;
+.logo span {
+  color: #3984e9;
 }
 
-.live-header {
-  border: 1px solid #92243f;
-  color: #ff6684;
-  background: #2c101b;
-  padding: 11px 15px;
-  border-radius: 30px;
+.upload {
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 18px 30px;
+  font-size: 20px;
   font-weight: bold;
-  font-size: 13px;
-  letter-spacing: 2px;
-  white-space: nowrap;
 }
 
-.info-bar {
-  margin: 10px 18px 35px;
-  padding: 20px 10px;
-  background: #17161c;
-  border: 1px solid #302c38;
-  border-radius: 24px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 6px;
-  color: #dddce5;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: clamp(10px,3vw,14px);
-}
-
-.dot {
-  color: #ff6684;
-}
-
+/* CONTENT */
 .container {
-  padding: 0 17px 35px;
+  padding: 25px 20px;
 }
 
-.section-title {
-  font-size: 21px;
-  margin: 0 0 20px 3px;
+.advertise {
+  font-size: 29px;
+  color: #64748b;
+  margin-bottom: 65px;
 }
 
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 22px 16px;
-}
-
+/* VIDEO CARD */
 .video-card {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
   position: relative;
   overflow: hidden;
-  border-radius: 34px;
-  border: 2px solid #34303c;
-  aspect-ratio: .73;
-  background: #17141c;
-  cursor: pointer;
-  color: white;
-  text-align: left;
-  width: 100%;
-  padding: 0;
-  display: block;
+  border-radius: 45px;
+  background: #111;
+  aspect-ratio: 9 / 16;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
-.video-card img {
+.video-card video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  inset: 0;
-}
-
-.video-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 45%,
-    rgba(0,0,0,.85)
-  );
-  pointer-events: none;
-}
-
-.live-label {
-  position: absolute;
-  top: 17px;
-  left: 13px;
-  z-index: 2;
-  background: #ff3158;
-  padding: 9px 13px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.hd-label {
-  position: absolute;
-  top: 17px;
-  right: 13px;
-  z-index: 2;
-  background: #282828dd;
-  padding: 9px 13px;
-  border-radius: 12px;
-  font-weight: bold;
-}
-.play-circle {
-  position: absolute;
-  z-index: 3;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: none;
-  background: #ff3158ed;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  padding-left: 6px;
-  cursor: pointer;
-  box-shadow: 0 0 25px #ff315855;
-  }
-.play-circle:active {
-  transform: translate(-50%,-50%) scale(.93);
-}
-
-.video-info {
-  position: absolute;
-  bottom: 20px;
-  left: 17px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.video-info h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.video-info p {
-  color: #dedee5;
-  font-size: 14px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 99;
-  inset: 0;
-  background: #000e;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.player-box {
-  width: 100%;
-  max-width: 550px;
-  position: relative;
-  background: #111;
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.player-box video {
-  width: 100%;
-  max-height: 80vh;
   display: block;
-  background: black;
 }
 
-.close-btn {
+/* PLAY BUTTON BESAR */
+.play-button {
   position: absolute;
-  z-index: 5;
-  right: 10px;
-  top: 10px;
-  width: 38px;
-  height: 38px;
-  border: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  color: white;
-  background: #ff3158;
-  font-size: 23px;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+  transition: 0.2s;
 }
 
-.footer {
-  text-align: center;
-  padding: 30px 15px;
-  color: #999;
-  font-size: 13px;
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.10);
+}
+
+.play-button::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 45px solid #000;
+  margin-left: 10px;
+}
+
+.play-button.hidden {
+  display: none;
+}
+
+/* MOBILE */
+@media(max-width:600px) {
+  .header {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .logo-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .upload {
+    padding: 15px 22px;
+    font-size: 17px;
+  }
+
+  .container {
+    padding: 25px 15px;
+  }
+
+  .advertise {
+    font-size: 27px;
+    margin-bottom: 60px;
+  }
+
+  .video-card {
+    border-radius: 35px;
+  }
+
+  .play-button {
+    width: 150px;
+    height: 150px;
+  }
 }
 </style>
 </head>
@@ -263,202 +178,66 @@ body {
 
 <header class="header">
   <div class="logo">
-    <div class="logo-icon">▶</div>
-    <div>ASUPAN<b>VIRAL</b></div>
+    <div class="logo-icon">V</div>
+    <div>vldey<span>.co</span></div>
   </div>
-  <div class="live-header">● </div>
-</header>
 
-<div class="info-bar">
-  <span class="dot">●</span>
-  <span>KUALITAS HD</span>
-  <span class="dot">●</span>
-  <span>TERBARU</span>
-  <span class="dot">●</span>
-</div>
+  <button class="upload">Upload</button>
+</header>
 
 <main class="container">
 
-<h2 class="section-title">▣ PILIH VIDEO</h2>
+  <div class="advertise">Advertise</div>
 
-<div class="video-grid">
+  <div class="video-card">
 
-  <div class="video-card" data-video="https://videotourl.com/videos/1793865178916-bf6d31ea-08f4-4292-a9a4-2df1acecea3a.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-77eff498-7b75-471d-ad61-bd049314a821.jpg" alt="Video 1">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
+    <video
+      id="myVideo"
+      poster="https://placehold.co/600x1067/252525/ffffff?text=VIDEO+THUMBNAIL"
+      playsinline
+      preload="metadata"
+    >
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    </video>
+
+    <button
+      class="play-button"
+      id="playButton"
+      aria-label="Putar video">
+    </button>
+
   </div>
 
-  <div class="video-card" data-video="https://videotourl.com/videos/1794835028552-e5f16843-5d38-4f2b-a5a5-e3b1602d7924.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-88810daf-d02f-465e-a7da-d7c389440c70.jpg" alt="Video 2">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-  <div class="video-card" data-video="https://videotourl.com/videos/1793117815847-e50d156f-73c5-4b08-9ef0-6d6355d7a00d.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-4fe3c933-7127-45b8-91b0-5d6d1ba05df1.jpg" alt="Video 3">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-  <div class="video-card" data-video="https://videotourl.com/videos/1793865195798-266a41e3-2dfd-4142-87aa-575da2ef6d1d.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-f24c916d-8ccf-48fb-9441-6d1a85a2649a.jpg" alt="Video 4">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-  <div class="video-card" data-video="https://videotourl.com/videos/1793864757671-74b28492-ca33-49f4-8cd5-f69748dad30b.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-127af223-4cb3-47f7-a99d-2b5ab2cd8be0.jpg" alt="Video 5">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-  <div class="video-card" data-video="https://videotourl.com/videos/1793932029889-35ad089c-f68d-4c99-a871-1ed86eb70daa.mp4">
-    <img src="https://cdn.phototourl.com/anon/2026-11-16-4e07aaf5-46e5-473e-977b-a49a149cbb26.jpg" alt="Video 6">
-    <span class="live-label">● </span>
-    <span class="hd-label">HD</span>
-    <button class="play-circle" type="button" aria-label="Buka iklan">▶</button>
-    <div class="video-info">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-</div>
 </main>
 
-<!-- PEMUTAR VIDEO -->
-
-<div class="modal" id="videoModal">
-  <div class="player-box">
-    <button class="close-btn" id="closePlayer">×</button>
-    <video id="mainVideo"
-      controls
-      playsinline
-      preload="metadata">
-    </video>
-  </div>
-</div>
-
-<footer class="footer">
-  © 2026 SPESIAL ASUPAN LOKAL
-</footer>
-
 <script>
+const video = document.getElementById("myVideo");
+const playButton = document.getElementById("playButton");
 
-// LINK DIRECT MONETAG
-const MONETAG_LINK = "https://uplcm.com/4/11810812";
-
-const modal = document.getElementById("videoModal");
-const player = document.getElementById("mainVideo");
-const closeBtn = document.getElementById("closePlayer");
-
-// KLIK SEGITIGA MERAH = MONETAG
-document.querySelectorAll(".play-circle").forEach(button => {
-
-  button.addEventListener("click", function(event) {
-
-    event.stopPropagation();
-
-    // Buka iklan di tab baru
-    window.open(
-      MONETAG_LINK,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
+playButton.addEventListener("click", function() {
+  video.play().then(() => {
+    playButton.classList.add("hidden");
+    video.controls = true;
+  }).catch(() => {
+    alert("Video gagal diputar. Periksa link video.");
   });
-
 });
 
-// KLIK AREA KARTU = PUTAR VIDEO
-document.querySelectorAll(".video-card").forEach(card => {
-
-  card.addEventListener("click", function() {
-
-    const videoUrl = this.dataset.video;
-
-    if (!videoUrl) {
-      alert("Link video belum dipasang.");
-      return;
-    }
-
-    player.pause();
-    player.src = videoUrl;
-    modal.classList.add("active");
-    player.load();
-
-    player.play().catch(() => {
-      // Pengunjung dapat menekan play manual
-    });
-
-  });
-
+video.addEventListener("ended", function() {
+  playButton.classList.remove("hidden");
+  video.controls = false;
 });
 
-// TUTUP VIDEO
-function closeModal() {
-
-  player.pause();
-  player.removeAttribute("src");
-  player.load();
-
-  modal.classList.remove("active");
-
-}
-
-closeBtn.addEventListener("click", closeModal);
-
-modal.addEventListener("click", function(event) {
-  if (event.target === modal) {
-    closeModal();
+video.addEventListener("pause", function() {
+  if (!video.ended) {
+    playButton.classList.remove("hidden");
   }
 });
 
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    closeModal();
-  }
+video.addEventListener("play", function() {
+  playButton.classList.add("hidden");
 });
-
 </script>
-<!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5064422,4,9,110,60,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5064422&101" alt="free html hit counter" border="0"></a></noscript>
-<!-- Histats.com  END  -->
+
 </body>
 </html>
