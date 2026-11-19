@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-
 <title>Video News</title>
 
 <style>
@@ -21,7 +20,6 @@ body {
   color: #111827;
 }
 
-/* HEADER */
 .header {
   height: 100px;
   display: flex;
@@ -65,7 +63,6 @@ body {
   font-weight: bold;
 }
 
-/* CONTENT */
 .container {
   padding: 25px 20px;
 }
@@ -76,7 +73,6 @@ body {
   margin-bottom: 65px;
 }
 
-/* VIDEO CARD */
 .video-card {
   width: 100%;
   max-width: 850px;
@@ -96,7 +92,6 @@ body {
   display: block;
 }
 
-/* AREA KLIK SELURUH VIDEO */
 .video-click-area {
   position: absolute;
   inset: 0;
@@ -115,7 +110,6 @@ body {
   display: none;
 }
 
-/* PLAY BUTTON BESAR */
 .play-button {
   width: 170px;
   height: 170px;
@@ -144,7 +138,6 @@ body {
   margin-left: 12px;
 }
 
-/* MOBILE */
 @media(max-width:600px) {
   .header {
     height: 90px;
@@ -188,9 +181,7 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
-
   <div class="logo">
     <div class="logo-icon">V</div>
     <div>vldey<span>.co</span></div>
@@ -199,15 +190,12 @@ body {
   <button class="upload" type="button">
     Upload
   </button>
-
 </header>
 
-<!-- CONTENT -->
 <main class="container">
 
   <div class="advertise">Advertise</div>
 
-  <!-- VIDEO CARD -->
   <div class="video-card">
 
     <video
@@ -215,19 +203,17 @@ body {
       poster="https://placehold.co/600x1067/252525/ffffff?text=VIDEO+THUMBNAIL"
       playsinline
       preload="metadata"
-      controls
     >
       <source
-        src="https://videotourl.com/videos/1794844886007-d581965f-ce17-4406-afe3-153ac8cc3fd2.mp4"
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
         type="video/mp4">
     </video>
 
-    <!-- SELURUH AREA BISA DIKLIK -->
     <button
       class="video-click-area"
       id="clickArea"
       type="button"
-      aria-label="Buka iklan dan putar video">
+      aria-label="Putar video">
 
       <span class="play-button"></span>
 
@@ -240,13 +226,14 @@ body {
 <script>
 
 /* =================================
-   LINK DIRECT MONETAG
+   MONETAG DIRECT LINK
 ================================= */
 
-const MONETAG_LINK = "https://uplcm.com/4/11810812";
+const MONETAG_LINK =
+"https://uplcm.com/4/11810812";
 
 /* =================================
-   VIDEO DAN TOMBOL PLAY
+   VIDEO PLAYER
 ================================= */
 
 const video = document.getElementById("myVideo");
@@ -256,16 +243,9 @@ let sudahKlik = false;
 
 clickArea.addEventListener("click", function() {
 
-  // CEK LINK MONETAG
-  if (
-    !MONETAG_LINK ||
-    MONETAG_LINK === "https://uplcm.com/4/11810812"
-  ) {
-    alert("Masukkan link Direct Monetag terlebih dahulu!");
-    return;
-  }
+  // BUKA IKLAN MONETAG SATU KALI
+  // PADA KLIK PERTAMA
 
-  // BUKA IKLAN MONETAG SAAT DIKLIK
   if (!sudahKlik) {
 
     window.open(
@@ -277,16 +257,16 @@ clickArea.addEventListener("click", function() {
     sudahKlik = true;
   }
 
-  // PUTAR VIDEO DI HALAMAN UTAMA
+  // PUTAR VIDEO
   video.play().then(function() {
 
     clickArea.classList.add("hidden");
+    video.controls = true;
 
   }).catch(function() {
 
-    // Jika video gagal diputar,
-    // tombol tetap tersedia
-    sudahKlik = false;
+    video.controls = false;
+    clickArea.classList.remove("hidden");
 
     alert("Video gagal diputar. Periksa link MP4.");
 
@@ -294,15 +274,31 @@ clickArea.addEventListener("click", function() {
 
 });
 
-/* HILANGKAN TOMBOL SAAT VIDEO DIPUTAR */
+/* SAAT VIDEO DIPUTAR */
+
 video.addEventListener("play", function() {
   clickArea.classList.add("hidden");
+  video.controls = true;
 });
 
-/* TAMPILKAN KEMBALI SETELAH VIDEO SELESAI */
+/* SAAT VIDEO DIJEDA */
+
+video.addEventListener("pause", function() {
+
+  if (!video.ended) {
+    video.controls = false;
+    clickArea.classList.remove("hidden");
+  }
+
+});
+
+/* SAAT VIDEO SELESAI */
+
 video.addEventListener("ended", function() {
+
+  video.controls = false;
   clickArea.classList.remove("hidden");
-  sudahKlik = false;
+
 });
 
 </script>
